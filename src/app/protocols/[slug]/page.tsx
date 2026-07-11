@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useRouter, useParams, useSearchParams } from "next/navigation";
 import { ChevronLeft, Compass, CheckCircle2, TrendingUp } from "lucide-react";
 import Navbar from "../../../components/layout/Navbar";
@@ -8,7 +8,7 @@ import ProtocolPlayer from "../../../components/ui/ProtocolPlayer";
 import TierBadge from "../../../components/shared/TierBadge";
 import { db, STATIC_PROTOCOLS, DriftEvent } from "../../../components/utils/db";
 
-export default function ProtocolSlugPage() {
+function ProtocolSlugContent() {
   const router = useRouter();
   const params = useParams();
   const searchParams = useSearchParams();
@@ -200,5 +200,19 @@ export default function ProtocolSlugPage() {
         />
       </main>
     </div>
+  );
+}
+
+export default function ProtocolSlugPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex-1 min-h-screen bg-ink flex items-center justify-center">
+          <div className="w-6 h-6 border-2 border-white/10 border-t-signal rounded-full animate-spin" />
+        </div>
+      }
+    >
+      <ProtocolSlugContent />
+    </Suspense>
   );
 }

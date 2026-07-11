@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ChevronLeft, Compass } from "lucide-react";
 import Navbar from "../../components/layout/Navbar";
 import DiagnosticFlow from "../../components/ui/DiagnosticFlow";
 import { db, DriftEvent } from "../../components/utils/db";
 
-export default function DiagnosePage() {
+function DiagnoseContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [driftEvent, setDriftEvent] = useState<DriftEvent | null>(null);
@@ -112,5 +112,19 @@ export default function DiagnosePage() {
 
       </main>
     </div>
+  );
+}
+
+export default function DiagnosePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex-1 min-h-screen bg-ink flex items-center justify-center">
+          <div className="w-6 h-6 border-2 border-white/10 border-t-signal rounded-full animate-spin" />
+        </div>
+      }
+    >
+      <DiagnoseContent />
+    </Suspense>
   );
 }

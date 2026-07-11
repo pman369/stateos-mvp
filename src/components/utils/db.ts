@@ -370,6 +370,7 @@ const DEFAULT_PROFILE: UserProfile = {
 // Core db actions
 export const db = {
   isCloudMode: () => isCloudMode,
+  supabase,
 
   // 1. STATE AUDITS
   async getAudits(): Promise<StateAudit[]> {
