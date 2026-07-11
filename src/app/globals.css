@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--ink);
+  --color-foreground: var(--paper);
+
+  --color-ink: #0F1116;
+  --color-ink-raised: #181B22;
+  --color-signal: #E8C77A;
+  --color-ash: #8B8F9C;
+  --color-paper: #EDEBE6;
+
+  /* Recovery Window Tiers */
+  --color-tier-instant: #E8C77A;
+  --color-tier-rapid: #C9B48A;
+  --color-tier-standard: #9C9284;
+  --color-tier-delayed: #736B72;
+  --color-tier-extended: #4A4550;
+
+  /* Fonts */
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  --ink: #0F1116;
+  --ink-raised: #181B22;
+  --signal: #E8C77A;
+  --ash: #8B8F9C;
+  --paper: #EDEBE6;
+}
+
+body {
+  background-color: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar for premium instrument feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: #252A34;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ash);
+}
+
+/* Signature Paced Breathing Animation: 10.9-second cycle (5.5 breaths/minute) */
+@keyframes breath-glow {
+  0%, 100% {
+    transform: scale(0.96);
+    opacity: 0.15;
+    filter: blur(40px);
+  }
+  40% {
+    /* Inhale peak around 4.36s (40% of cycle) */
+    transform: scale(1.05);
+    opacity: 0.45;
+    filter: blur(60px);
+  }
+  50% {
+    /* Brief hold */
+    transform: scale(1.05);
+    opacity: 0.45;
+    filter: blur(60px);
+  }
+  90% {
+    /* Exhale finish */
+    transform: scale(0.96);
+    opacity: 0.15;
+    filter: blur(40px);
+  }
+}
+
+@keyframes breath-line {
+  0%, 100% {
+    transform: scaleX(0.2);
+    opacity: 0.3;
+  }
+  40%, 50% {
+    transform: scaleX(1);
+    opacity: 0.9;
+  }
+}
+
+.animate-breath-glow {
+  animation: breath-glow 10.9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-breath-line {
+  animation: breath-line 10.9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Reduced Motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  .animate-breath-glow,
+  .animate-breath-line {
+    animation: none !important;
+    transform: scale(1) !important;
+    opacity: 0.3 !important;
+  }
+}
