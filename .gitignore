@@ -39,11 +39,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-#project files
-stateOS_Visual_Design_System.md
-stateOS_Technical_Specification_v2.md
-stateOS_Settings_Profile_Plan.md
-stateOS_Protocol_Content_Library.md
-stateOS_Onboarding_Script.md
-stateOS_Notification_Microcopy.md
+setup_docs
