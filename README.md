@@ -38,13 +38,13 @@ Most wellness apps ask you to log a mood. stateOS asks a narrower, more actionab
 
 ## Tech Stack
 
-- **Framework:** [Next.js 15](https://nextjs.org/) (App Router), TypeScript
-- **Database:** [Supabase](https://supabase.com/) (Postgres + Row-Level Security)
-- **ORM:** [Drizzle ORM](https://orm.drizzle.team/)
-- **Client state:** [Zustand](https://github.com/pmndrs/zustand) (UI state) + [TanStack Query](https://tanstack.com/query) (server state, optimistic writes)
-- **Styling:** Tailwind CSS + [shadcn/ui](https://ui.shadcn.com/)
-- **AI:** [Google Gemini API](https://ai.google.dev/) (`gemini-2.5-flash` for structured classification, `gemini-2.5-pro` for reflective prompts), proxied server-side via Supabase Edge Functions — the API key never reaches the client
-- **Hosting:** [Vercel](https://vercel.com/)
+- **Framework:** Next.js 15 (App Router), TypeScript
+- **Database:** Supabase (Postgres + Row-Level Security)
+- **ORM:** Drizzle ORM
+- **Client state:** Zustand (UI state) + TanStack Query (server state, optimistic writes)
+- **Styling:** Tailwind CSS + shadcn/ui
+- **AI:** Google Gemini API (`gemini-2.5-flash` for structured classification, `gemini-2.5-pro` for reflective prompts), proxied server-side via Supabase Edge Functions — the API key never reaches the client
+- **Hosting:** Vercel
 
 ## Project Documentation
 
@@ -60,7 +60,7 @@ Full specs live in `/docs`. Start with the technical spec, then the content docs
 | `stateOS_Notification_Microcopy.md` | Push notifications, result screens, empty/error states |
 | `stateOS_Visual_Design_System.md` | Color, type, layout, and motion direction |
 | `StateArchitecture_Science_Framing_Cheatsheet.md` | Policy and specific fixes for how source material claims are tiered and cited |
-| `stateOS_Documentation_Plan.md` | What's written, what's left, and in what order |
+| `stateOS_Documentation_Plan.md` | Status index of what's written and what's left |
 
 ## Getting Started
 
@@ -68,8 +68,8 @@ Full specs live in `/docs`. Start with the technical spec, then the content docs
 
 - Node.js 20+
 - npm or pnpm
-- A [Supabase](https://supabase.com/) account and project
-- A [Google AI Studio](https://aistudio.google.com/) API key for Gemini
+- A Supabase account and project
+- A Google AI Studio API key for Gemini
 
 ### Installation
 
@@ -82,8 +82,8 @@ npm install
 ### Supabase Setup
 
 1. Create a new Supabase project.
-2. Run the schema migration from `docs/stateOS_Technical_Specification_v2.md` §4 (tables, RLS policies, indexes) plus the additions in `stateOS_Settings_Profile_Plan.md` §2.
-3. Seed the `protocols` table using the JSON blocks in `stateOS_Protocol_Content_Library.md`.
+2. Run the schema migration from `docs/stateOS_Technical_Specification_v2.md` §4 (tables, RLS policies, indexes) plus the additions in `docs/stateOS_Settings_Profile_Plan.md` §2.
+3. Seed the `protocols` table using the JSON blocks in `docs/stateOS_Protocol_Content_Library.md`.
 4. Deploy the Edge Functions in `supabase/functions/` (`gemini-proxy`, `diagnose-drift`, `daily-reminder-cron`, `recovery-window-digest`, `identity-anchor-reflect`, `export-user-data`, `delete-account`).
 5. Set `GEMINI_API_KEY` as a secret on the Edge Functions — **not** in any client-exposed env file:
 
