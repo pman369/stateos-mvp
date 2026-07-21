@@ -1,6 +1,6 @@
 # stateOS
 
-**A state engineering platform: track internal state, diagnose drift, and intervene in real time.**
+**StateOS is the world's first state engineering platform: track internal state, diagnose drift, and intervene in real time.**
 
 stateOS treats "feeling off" as a solvable, trackable problem. It measures your **Recovery Window** — the time between noticing you've drifted from your baseline and getting back to it — and gets you there faster with a diagnostic flow and a library of short, timed protocols grounded in nervous-system regulation (HRV, vagal tone, paced breathing).
 
@@ -48,19 +48,16 @@ Most wellness apps ask you to log a mood. stateOS asks a narrower, more actionab
 
 ## Project Documentation
 
-Full specs live in `/docs`. Start with the technical spec, then the content docs if you're working on copy or design:
+| Doc | Description |
+|-----|-------------|
+| [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) | System design, data flow, dual-mode pattern |
+| [`docs/API.md`](./docs/API.md) | API routes + db.ts data layer reference |
+| [`docs/DATABASE.md`](./docs/DATABASE.md) | Schema, migrations, RLS policies |
+| [`docs/PROTOCOLS.md`](./docs/PROTOCOLS.md) | Protocol library, science tiering, player logic |
+| [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md) | Environment setup, build, deploy |
+| [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md) | Dev workflow, conventions, linting |
+| [`docs/USER_GUIDE.md`](./docs/USER_GUIDE.md) | End-user feature walkthrough |
 
-| Doc | Covers |
-|---|---|
-| `stateOS_Technical_Specification_v2.md` | Architecture, database schema, Edge Functions, routes, MVP scope |
-| `stateOS_Settings_Profile_Plan.md` | Profile and Settings surfaces, account deletion, privacy toggles |
-| `stateOS_Protocol_Content_Library.md` | Full seed-ready scripts for all 6 MVP protocols |
-| `stateOS_Diagnostic_Question_Bank.md` | Exact wording and branching logic for the Diagnostic Engine |
-| `stateOS_Onboarding_Script.md` | Screen-by-screen first-run copy |
-| `stateOS_Notification_Microcopy.md` | Push notifications, result screens, empty/error states |
-| `stateOS_Visual_Design_System.md` | Color, type, layout, and motion direction |
-| `StateArchitecture_Science_Framing_Cheatsheet.md` | Policy and specific fixes for how source material claims are tiered and cited |
-| `stateOS_Documentation_Plan.md` | Status index of what's written and what's left |
 
 ## Getting Started
 
